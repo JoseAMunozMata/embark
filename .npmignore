@@ -5,8 +5,8 @@
 .vscode
 CONTRIBUTING.md
 appveyor.yml
+babel.config.js
+dist/test
 header.png
 logo.png
 test_apps
-src
-dist/test
