@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /* global __dirname process require */
 
 // This script doesn't use JS syntax, packages, or APIs *un*supported by any
@@ -25,9 +23,9 @@ function main() {
 
   /* attempt to find a "local" embark in or above but not below dappPath
 
-     let `dappPath/(([../])*)bin/embark.js` be a "containing" embark
+     let `dappPath/(([../])*)bin/embark` be a "containing" embark
 
-     let `dappPath/(([../])*)node_modules/embark/dist/bin/embark.js` be an "installed"
+     let `dappPath/(([../])*)node_modules/embark/bin/embark` be an "installed"
      embark
 
      if containing and installed embarks are both found, and if containing
@@ -49,7 +47,7 @@ function main() {
   var pkgJson = findPkgJson(dappPath, embarkJson, local);
   process.env.PKG_PATH = pkgJson.dirname;
   var embark = select(invoked, local);
-  process.env.EMBARK_PATH = path.join(embark.pkgDir, 'dist');
+  process.env.EMBARK_PATH = embark.pkgDir;
   embark.exec();
 }
 
@@ -113,7 +111,7 @@ EmbarkBin.prototype.setBinrealpath = function () {
 
 EmbarkBin.prototype.setPkgDir = function () {
   if (this.binpath) {
-    this.pkgDir = path.join(path.dirname(this.binpath), '..', '..');
+    this.pkgDir = path.join(path.dirname(this.binpath), '..');
   }
 };
 
@@ -255,7 +253,7 @@ function findBin(dappPath, find, invoked, Kind) {
 function findBinContaining(dappPath, invoked) {
   return findBin(
     dappPath,
-    'bin/embark.js',
+    'bin/embark',
     invoked,
     EmbarkBinLocalContaining
   );
@@ -264,7 +262,7 @@ function findBinContaining(dappPath, invoked) {
 function findBinInstalled(dappPath, invoked) {
   return findBin(
     dappPath,
-    'node_modules/embark/bin/embark.js',
+    'node_modules/embark/bin/embark',
     invoked,
     EmbarkBinLocalInstalled
   );
@@ -721,7 +719,7 @@ function realpath(filepath) {
 }
 
 function thisEmbark() {
-  return (new EmbarkBin(path.join(__dirname, '../bin/embark.js'))).handle();
+  return (new EmbarkBin(path.join(__dirname, '../../bin/embark'))).handle();
 }
 
 function whenNoShim() {

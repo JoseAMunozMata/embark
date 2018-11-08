@@ -4,7 +4,7 @@
   "description": "",
   "main": "Gruntfile.js",
   "scripts": {
-    "embark": "node ../../dist/bin/embark.js",
+    "embark": "node ../../bin/embark",
     "test": "npm run embark test"
   },
   "author": "",

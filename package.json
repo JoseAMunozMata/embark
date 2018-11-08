@@ -20,7 +20,7 @@
     "url": "https://github.com/embark-framework/embark.git"
   },
   "bin": {
-    "embark": "./dist/bin/embark.js"
+    "embark": "./bin/embark"
   },
   "main": "./dist/lib/index.js",
   "scripts": {
