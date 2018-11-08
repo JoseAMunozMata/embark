@@ -2,22 +2,15 @@ environment:
   matrix:
     - nodejs_version: "8"
     - nodejs_version: "10"
-
 install:
   # get the latest version of Node.js in a release series
   - ps: Install-Product node $env:nodejs_version
-  # update npm
-  - npm install -g npm@latest
-  # install modules
-  - npm install
-  # build embark
-  - npm run prepack
-
-# Post-install test scripts.
-test_script:
   # output useful info for debugging
   - node --version
   - npm --version
+  # install modules
+  - npm install
+test_script:
+  - npm run build:node
   - npm test
-
 build: off
