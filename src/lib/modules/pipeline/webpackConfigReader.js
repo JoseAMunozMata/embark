@@ -9,7 +9,7 @@ class WebpackConfigReader {
 
   async readConfig(callback){
     const dappConfigPath = fs.dappPath('webpack.config.js');
-    const defaultConfigPath = fs.embarkPath('lib/modules/pipeline', 'webpack.config.js');
+    const defaultConfigPath = fs.embarkPath('dist/lib/modules/pipeline', 'webpack.config.js');
 
     let config, configPath;
     try {
