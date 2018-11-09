@@ -50,12 +50,12 @@ class TextEditorToolbar extends Component {
             <FontAwesomeIcon className="mr-2" name="plus"/>
             Add File
           </Button>
-          <AddFileModal node={{path: this.props.rootDirname}} saveFile={this.props.saveFile} ref={this.addFileModal} />
+          <AddFileModal theme={this.props.theme} node={{path: this.props.rootDirname}} saveFile={this.props.saveFile} ref={this.addFileModal} />
           <Button color="success" size="sm" className="mr-1" onClick={() => this.addFolderModal.current.toggle()}>
             <FontAwesomeIcon className="mr-2" name="folder-open"/>
             Add Folder
           </Button>
-          <AddFolderModal node={{path: this.props.rootDirname}} saveFolder={this.props.saveFolder} ref={this.addFolderModal} />
+          <AddFolderModal theme={this.props.theme} node={{path: this.props.rootDirname}} saveFolder={this.props.saveFolder} ref={this.addFolderModal} />
           <Button color="success" size="sm" className="mr-1" onClick={this.props.save}>
             <FontAwesomeIcon className="mr-2" name="save"/>
             Save
@@ -79,6 +79,7 @@ class TextEditorToolbar extends Component {
 
 TextEditorToolbar.propTypes = {
   isContract: PropTypes.bool,
+  theme: PropTypes.string,
   save: PropTypes.func,
   saveFile: PropTypes.func,
   rootDirname: PropTypes.string,

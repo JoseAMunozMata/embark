@@ -5,10 +5,8 @@ import PropTypes from 'prop-types';
 import {Treebeard, decorators} from 'react-treebeard';
 import classNames from 'classnames';
 
-import {DARK_THEME} from '../constants';
 import FileExplorerRowContainer from '../containers/FileExplorerRowContainer';
-
-const isDarkTheme= (theme) => theme === DARK_THEME;
+import {isDarkTheme} from '../utils/utils';
 
 const style = (theme) => ({
   tree: {

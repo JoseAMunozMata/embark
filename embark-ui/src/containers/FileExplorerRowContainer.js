@@ -7,6 +7,7 @@ import FontAwesome from 'react-fontawesome';
 import {removeFile as removeFileAction, saveFile as saveFileAction, saveFolder as saveFolderAction} from '../actions';
 import AddFileModal from '../components/AddFileModal';
 import AddFolderModal from '../components/AddFolderModal';
+import { getTheme } from '../reducers/selectors';
 
 class FileExplorerRowContainer extends React.Component {
   constructor(props) {
@@ -45,8 +46,8 @@ class FileExplorerRowContainer extends React.Component {
             <UncontrolledTooltip placement="bottom" target="add-folder">
               Add Folder
             </UncontrolledTooltip>
-            <AddFileModal node={this.props.node} saveFile={this.props.saveFile} ref={this.addFileModal} />
-            <AddFolderModal node={this.props.node} saveFolder={this.props.saveFolder} ref={this.addFolderModal} />
+            <AddFileModal theme={this.props.theme} node={this.props.node} saveFile={this.props.saveFile} ref={this.addFileModal} />
+            <AddFolderModal theme={this.props.theme} node={this.props.node} saveFolder={this.props.saveFolder} ref={this.addFolderModal} />
           </React.Fragment>
         }
         <span id="delete"
@@ -82,11 +83,18 @@ FileExplorerRowContainer.propTypes = {
   saveFile: PropTypes.func,
   saveFolder: PropTypes.func,
   style: PropTypes.object,
-  node: PropTypes.object
+  node: PropTypes.object,
+  theme: PropTypes.string
 };
 
+const mapStateToProps = (state) => {
+  return {
+    theme: getTheme(state)
+  }
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   {
     removeFile: removeFileAction.request,
     saveFile: saveFileAction.request,

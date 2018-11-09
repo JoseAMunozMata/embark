@@ -8,7 +8,7 @@ import {
   removeFile as removeFileAction,
   saveFolder as saveFolderAction
 } from '../actions';
-import { getRootDirname } from '../reducers/selectors';
+import { getRootDirname, getTheme } from '../reducers/selectors';
 
 class TextEditorToolbarContainer extends Component {
   save() {
@@ -25,6 +25,7 @@ class TextEditorToolbarContainer extends Component {
                               openAsideTab={this.props.openAsideTab}
                               save={() => this.save()}
                               saveFile={this.props.saveFile}
+                              theme={this.props.theme}
                               saveFolder={this.props.saveFolder}
                               rootDirname={this.props.rootDirname}
                               remove={() => this.remove()}
@@ -34,6 +35,7 @@ class TextEditorToolbarContainer extends Component {
 
 TextEditorToolbarContainer.propTypes = {
   currentFile: PropTypes.object,
+  theme: PropTypes.string,
   isContract: PropTypes.bool,
   saveFile: PropTypes.func,
   saveFolder: PropTypes.func,
@@ -46,7 +48,8 @@ TextEditorToolbarContainer.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    rootDirname: getRootDirname(state)
+    rootDirname: getRootDirname(state),
+    theme: getTheme(state)
   }
 }
 
