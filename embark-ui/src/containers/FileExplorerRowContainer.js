@@ -29,8 +29,16 @@ class FileExplorerRowContainer extends React.Component {
       <span className="float-right mr-2">
         {this.props.node.children &&
           <React.Fragment>
-            <a id="add-file" onClick={() => this.addFileModal.current.toggle()}><FontAwesome name="plus" className="text-success mr-2" /></a>
-            <a id="add-folder" onClick={() => this.addFolderModal.current.toggle()}><FontAwesome name="folder-open" className="text-success mr-2" /></a>
+            <span id="add-file"
+                  style={{cursor: "pointer"}}
+                  onClick={() => this.addFileModal.current.toggle()}>
+              <FontAwesome name="plus" className="text-success mr-2" />
+            </span>
+            <span id="add-folder"
+                  style={{cursor: "pointer"}}
+                  onClick={() => this.addFolderModal.current.toggle()}>
+              <FontAwesome name="folder-open" className="text-success mr-2" />
+            </span>
             <UncontrolledTooltip placement="bottom" target="add-file">
               Add File
             </UncontrolledTooltip>
@@ -41,7 +49,11 @@ class FileExplorerRowContainer extends React.Component {
             <AddFolderModal node={this.props.node} saveFolder={this.props.saveFolder} ref={this.addFolderModal} />
           </React.Fragment>
         }
-        <a id="delete" onClick={() => this.props.removeFile(this.props.node)}><FontAwesome name="trash" className="text-danger" /></a>
+        <span id="delete"
+              style={{cursor: "pointer"}}
+              onClick={() => this.props.removeFile(this.props.node)}>
+          <FontAwesome name="trash" className="text-danger" />
+        </span>
         <UncontrolledTooltip placement="bottom" target="delete">
           Delete
         </UncontrolledTooltip>
