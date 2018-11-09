@@ -20,6 +20,7 @@ module.exports = function (api) {
           loose: true
         }
       ],
+      '@babel/plugin-proposal-optional-chaining',
       [
         '@babel/plugin-transform-runtime', {
           corejs: 2
